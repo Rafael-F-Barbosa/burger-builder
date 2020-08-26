@@ -8,7 +8,7 @@ import axios from '../../axios-orders';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-import burger from '../../components/Burger/Burger';
+// import burger from '../../components/Burger/Burger';
 
 const INGREIDIENT_PRICES = {
 	salad: 0.5,
@@ -26,6 +26,7 @@ class BurgerBuilder extends Component {
 		loading: false
 	};
 	componentDidMount() {
+		console.log(this.props);
 		axios.get('https://react-burger-builder-1e524.firebaseio.com/ingredients.json').then((response) => {
 			this.setState({ ingredients: response.data });
 		});
@@ -82,31 +83,16 @@ class BurgerBuilder extends Component {
 		this.setState({ purchasing: false });
 	};
 	purchaseContinueHandler = () => {
-		this.setState({ loading: true });
-		const order = {
-			ingredients: this.state.ingredients,
-			price: this.state.totalPrice, // This can be a problem in production
-			costumer: {
-				name: 'Rafa',
-				adress: {
-					street: 'Uma rua',
-					zipCode: '18181',
-					country: 'Brazil'
-				},
-				email: 'test@test.com'
-			},
-			deliveryMethod: 'fastest'
-		};
-		axios
-			.post('/orders.json', order)
-			.then((response) => {
-				this.setState({ loading: false, purchasing: false });
-				console.log(response);
-			})
-			.catch((err) => {
-				this.setState({ loading: false, purchasing: false });
-				console.log(err);
-			});
+		const queryParams = [];
+		for (let i in this.state.ingredients) {
+			queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
+		}
+		queryParams.push('price=' + this.state.totalPrice);
+		const queryString = queryParams.join('&');
+		this.props.history.push({
+			pathname: '/checkout',
+			search: '?' + queryString
+		});
 	};
 	render() {
 		const disabledInfo = {
