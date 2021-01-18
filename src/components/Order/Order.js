@@ -19,7 +19,7 @@ const order = (props) => {
 				}}
 				key={ig.name}
 			>
-				{ig.name} ({ig.amout})
+				{ig.name} ({ig.amount})
 			</span>
 		);
 	});
