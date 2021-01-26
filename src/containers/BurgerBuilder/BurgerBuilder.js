@@ -18,7 +18,6 @@ class BurgerBuilder extends Component {
 		purchasing: false,
 	};
 	componentDidMount() {
-		console.log('[BBdidMount]', this.props)
 		this.props.onInitIngredients()
 	}
 	updatePurchaseState = (ingredients) => {
@@ -64,7 +63,6 @@ class BurgerBuilder extends Component {
 					purchaseContinued={this.purchaseContinueHandler}
 				/>
 			);
-			console.log('[BBBurger]', this.props.ings)
 			burger = (
 				<Aux>
 					<Burger ingredients={this.props.ings} />

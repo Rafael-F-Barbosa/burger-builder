@@ -5,11 +5,9 @@ const input = (props) => {
 	let inputElement;
 	const inputClasses = [ classes.InputElement ];
 
-	console.log(props.invalid);
 	if (props.invalid && props.shouldValidate && props.touched) {
 		inputClasses.push(classes.Invalid);
 	}
-	console.log(inputClasses);
 	switch (props.inputType) {
 		case 'input':
 			inputElement = (
