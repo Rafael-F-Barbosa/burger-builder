@@ -2,7 +2,7 @@
 
 ## Resumo
 Este aplicativo foi desenvolvido ao longo do curso de React - The Complete Guide (incl Hooks, React Router, Redux) disponível em: 
- https://www.udemy.com/course/react-the-complete-guide-incl-redux/. Neste é montado um e-commerce em que se pode criar hamburguers personalizados. São implementadas autenticação e os dados são salvos no serviço da google Firebase.
+ https://www.udemy.com/course/react-the-complete-guide-incl-redux/. Neste é montado um e-commerce em que se pode criar hamburguers personalizados. São implementadas autenticação e os dados são salvos no serviço da google Firebase. O aplicativo está disponível em: https://react-burger-builder-1e524.web.app/.
 
 ## Funcionamento
 
